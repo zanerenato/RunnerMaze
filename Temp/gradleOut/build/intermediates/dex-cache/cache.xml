@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/renatozane/Documents/PixelFragata/RunnerMaze/Temp/gradleOut/libs/unity-classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="28.0.1"
+        sha1="453f7ef63f34c4cfc7c6e10ab39c61f637b7855c">
+        <dex dex="/Users/renatozane/Documents/PixelFragata/RunnerMaze/Temp/gradleOut/build/intermediates/pre-dexed/release/unity-classes_900870930d3d8bf036a2130bfdf226c63d06ac89.jar" />
+    </item>
+
+</items>

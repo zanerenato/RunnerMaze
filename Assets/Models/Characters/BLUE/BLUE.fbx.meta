@@ -1,0 +1,252 @@
+fileFormatVersion: 2
+guid: 93d4d766d76fbd74f9be0f8ca4749a7c
+timeCreated: 1530751743
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: armor
+    100002: //RootNode
+    100004: body
+    100006: Chest
+    100008: Foot_L
+    100010: Foot_R
+    100012: Hand_L
+    100014: Hand_R
+    100016: Head
+    100018: Hips
+    100020: Index_Distal_L
+    100022: Index_Distal_R
+    100024: Index_Intermediate_L
+    100026: Index_Intermediate_R
+    100028: Index_Proximal_L
+    100030: Index_Proximal_R
+    100032: Jaw
+    100034: Little_Distal_L
+    100036: Little_Distal_R
+    100038: Little_Intermediate_L
+    100040: Little_Intermediate_R
+    100042: Little_Proximal_L
+    100044: Little_Proximal_R
+    100046: Lower_Leg_L
+    100048: Lower_Leg_R
+    100050: LowerArm_L
+    100052: LowerArm_R
+    100054: lowerarmExtru2_L
+    100056: lowerarmExtru2_R
+    100058: lowerarmExtru_L
+    100060: lowerarmExtru_R
+    100062: Middle_Distal_L
+    100064: Middle_Distal_R
+    100066: Middle_Intermediate_L
+    100068: Middle_Intermediate_R
+    100070: Middle_Proximal_L
+    100072: Middle_Proximal_R
+    100074: Neck
+    100076: neckextru2_L
+    100078: neckextru2_R
+    100080: neckextru_L
+    100082: neckextru_R
+    100084: Ring_Distal_L
+    100086: Ring_Distal_R
+    100088: Ring_Intermediate_L
+    100090: Ring_Intermediate_R
+    100092: Ring_Proximal_L
+    100094: Ring_Proximal_R
+    100096: Root
+    100098: shield
+    100100: shoulder_armor_L
+    100102: shoulder_armor_R
+    100104: Shoulder_L
+    100106: Shoulder_R
+    100108: Spine
+    100110: sword
+    100112: Thumb_Distal_L
+    100114: Thumb_Distal_R
+    100116: Thumb_Intermediate_L
+    100118: Thumb_Intermediate_R
+    100120: Thumb_Proximal_L
+    100122: Thumb_Proximal_R
+    100124: Toes_L
+    100126: Toes_R
+    100128: Upper_Chest
+    100130: Upper_Leg_L
+    100132: Upper_Leg_R
+    100134: UpperArm_L
+    100136: UpperArm_R
+    400000: armor
+    400002: //RootNode
+    400004: body
+    400006: Chest
+    400008: Foot_L
+    400010: Foot_R
+    400012: Hand_L
+    400014: Hand_R
+    400016: Head
+    400018: Hips
+    400020: Index_Distal_L
+    400022: Index_Distal_R
+    400024: Index_Intermediate_L
+    400026: Index_Intermediate_R
+    400028: Index_Proximal_L
+    400030: Index_Proximal_R
+    400032: Jaw
+    400034: Little_Distal_L
+    400036: Little_Distal_R
+    400038: Little_Intermediate_L
+    400040: Little_Intermediate_R
+    400042: Little_Proximal_L
+    400044: Little_Proximal_R
+    400046: Lower_Leg_L
+    400048: Lower_Leg_R
+    400050: LowerArm_L
+    400052: LowerArm_R
+    400054: lowerarmExtru2_L
+    400056: lowerarmExtru2_R
+    400058: lowerarmExtru_L
+    400060: lowerarmExtru_R
+    400062: Middle_Distal_L
+    400064: Middle_Distal_R
+    400066: Middle_Intermediate_L
+    400068: Middle_Intermediate_R
+    400070: Middle_Proximal_L
+    400072: Middle_Proximal_R
+    400074: Neck
+    400076: neckextru2_L
+    400078: neckextru2_R
+    400080: neckextru_L
+    400082: neckextru_R
+    400084: Ring_Distal_L
+    400086: Ring_Distal_R
+    400088: Ring_Intermediate_L
+    400090: Ring_Intermediate_R
+    400092: Ring_Proximal_L
+    400094: Ring_Proximal_R
+    400096: Root
+    400098: shield
+    400100: shoulder_armor_L
+    400102: shoulder_armor_R
+    400104: Shoulder_L
+    400106: Shoulder_R
+    400108: Spine
+    400110: sword
+    400112: Thumb_Distal_L
+    400114: Thumb_Distal_R
+    400116: Thumb_Intermediate_L
+    400118: Thumb_Intermediate_R
+    400120: Thumb_Proximal_L
+    400122: Thumb_Proximal_R
+    400124: Toes_L
+    400126: Toes_R
+    400128: Upper_Chest
+    400130: Upper_Leg_L
+    400132: Upper_Leg_R
+    400134: UpperArm_L
+    400136: UpperArm_R
+    2100000: Material.003
+    2100002: Material.007
+    2100004: Material.005
+    2100006: Material.006
+    4300000: shield
+    4300002: body
+    4300004: armor
+    4300006: sword
+    7400000: Armatae
+    7400002: Et Honorem
+    7400004: Et Impetum
+    7400006: Genua
+    7400008: iddle
+    7400010: iddle_02
+    7400012: Vox populi
+    7400014: Been hit
+    7400016: move_complete
+    7400018: Death
+    7400020: move_start
+    7400022: move_land
+    7400024: move_repeat
+    7400026: Been hit 2
+    9500000: //RootNode
+    13700000: armor
+    13700002: body
+    13700004: shield
+    13700006: sword
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
