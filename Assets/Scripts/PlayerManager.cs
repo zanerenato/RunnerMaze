@@ -14,11 +14,15 @@ public class PlayerManager : MonoBehaviour
 	private Rigidbody _myRigidbody;
 
 	[SerializeField] public float MoveSpeed;
-	[SerializeField] public float JumpForce;
+	[SerializeField] public float JumpForce = 9.8f;
 	[SerializeField] public float SideSpeed;
-	[SerializeField] private Text m_Text;
+	[SerializeField] public float Gravity = 9.8f;
 	private Vector2 _direction;
 	private Vector2 _startPos;
+	private bool _isGrounded;
+	private bool _isJumping;
+	
+	private const float JumpHeight = 2.0f;
 
 	// Use this for initialization
 	void Start ()
@@ -28,18 +32,24 @@ public class PlayerManager : MonoBehaviour
 		{
 			_myTransform = gameObject.AddComponent<Transform>();
 		}
-		_myRigidbody = gameObject.GetComponent<Rigidbody>();
-		if (_myTransform == null)
-		{
-			_myRigidbody = gameObject.AddComponent<Rigidbody>();
-		}
-		
+//		_myRigidbody = gameObject.GetComponent<Rigidbody>();
+//		if (_myTransform == null)
+//		{
+//			_myRigidbody = gameObject.AddComponent<Rigidbody>();
+//		}
+
+		_isGrounded = true;
+		_isJumping = false;
 	}
 
 	private void FixedUpdate()
 	{
-		var force = transform.forward * MoveSpeed;
-		_myRigidbody.MovePosition(transform.position + force * Time.deltaTime);
+//		var force = transform.forward * MoveSpeed;
+//		_myRigidbody.MovePosition(transform.position + force * Time.deltaTime);
+		var newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+		newPosition.z += MoveSpeed * Time.deltaTime;
+		
+		_myTransform.position = newPosition;
 	}
 
 	// Update is called once per frame
@@ -50,24 +60,25 @@ public class PlayerManager : MonoBehaviour
 		if (Input.GetKeyDown("a"))
 		{
 //			force += Vector3.left * SideSpeed;
-			transform.position = new Vector3(transform.position.x - SideSpeed, transform.position.y, transform.position.z);
+//			transform.position = new Vector3(transform.position.x - SideSpeed, transform.position.y, transform.position.z);
+			newPosition.x -= SideSpeed;
+			_myTransform.position = newPosition;
 		}
 		else if (Input.GetKeyDown("d"))
 		{
 //			force += Vector3.right * SideSpeed;
-			transform.position = new Vector3(transform.position.x + SideSpeed, transform.position.y, transform.position.z);
+//			transform.position = new Vector3(transform.position.x + SideSpeed, transform.position.y, transform.position.z);
+			newPosition.x += SideSpeed;
+			_myTransform.position = newPosition;
 		}
 
 		if (Input.GetKeyDown("space"))
 		{
-			_myRigidbody.AddForce(transform.up * JumpForce, ForceMode.Impulse);
-			
+//			_myRigidbody.AddForce(transform.up * JumpForce*100, ForceMode.Impulse);
+			_isGrounded = false;
+			_isJumping = true;
 		}
 
-		
-//		newPosition.z += MoveSpeed;
-		
-	
 		// Track a single touch as a direction control.
 		if (Input.touchCount > 0)
 		{
@@ -99,18 +110,42 @@ public class PlayerManager : MonoBehaviour
 						}
 
 						newPosition.x += side;
-						_myTransform.position = newPosition;
+						
 					}
 					else
 					{
 						if (_direction.y > 0)
 						{
-//							_myTransform.AddForce(transform.up * JumpForce, ForceMode.Impulse);
+//							_myRigidbody.AddForce(transform.up * JumpForce, ForceMode.Impulse);
+							_isGrounded = false;
+							_isJumping = true;
 						}
 					}
 					break;
 			}
 		}
+
+		if (!_isGrounded)
+		{
+			if (_isJumping)
+			{
+				newPosition.y += JumpForce * Time.deltaTime;
+				if (newPosition.y >= JumpHeight)
+				{
+					_isJumping = false;
+				}
+			}
+			else
+			{
+				newPosition.y -= Gravity * Time.deltaTime;
+				if (newPosition.y <= 0)
+				{
+					newPosition.y = 0;
+					_isGrounded = true;
+				}	
+			}
+		}
+		_myTransform.position = newPosition;
 		
 	}
 
