@@ -1,4 +1,4 @@
-#Tue Jul 10 21:46:09 BRT 2018
+#Thu Jul 12 17:48:55 BRT 2018
 base.0=/Users/renatozane/Documents/PixelFragata/RunnerMaze/Temp/gradleOut/build/intermediates/transforms/dex/release/folders/1000/1f/main
 renamed.0=classes.dex
 file.0=/Users/renatozane/Documents/PixelFragata/RunnerMaze/Temp/gradleOut/build/intermediates/transforms/dex/release/folders/1000/1f/main/classes.dex
