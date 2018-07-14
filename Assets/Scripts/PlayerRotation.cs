@@ -77,9 +77,8 @@ public class PlayerRotation : MonoBehaviour {
     public void StartSlide(Transform player, float speed)
     {
         _playerTransform = player;
-        _xRotation = _playerTransform.eulerAngles.x;
+        _xRotation = _playerTransform.localRotation.eulerAngles.x;
         _refRotation = _xRotation;
-//        _newXRotation = _playerTransform.eulerAngles.y + newRotation;
         _playerSpeed = speed;
         _clockWise = -1;
         _isSlide = true;
@@ -98,7 +97,7 @@ public class PlayerRotation : MonoBehaviour {
             if (targetDirection != Directions.None)
             {
                 //player.Rotate(0,(int)targetDirection*90.0f,0);
-                Quaternion rotation = Quaternion.Euler(0, (int) targetDirection * 90.0f, 0);
+                Quaternion rotation = Quaternion.Euler(0, player.rotation.eulerAngles.y + (int) targetDirection * 90.0f, 0);
                 if (player.rotation != rotation)
                 {
                     player.rotation = rotation;
@@ -119,12 +118,13 @@ public class PlayerRotation : MonoBehaviour {
         {
             yield return new WaitUntil(IsSlide);
             //@Renato: Chama a rotação até que a mesma tenha chego na rotação esperada
-            if (_xRotation <= -90.0f)
+            if (_refRotation <= -90.0f)
             {
                 _playerTransform.position = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 0.3f,
                     _playerTransform.position.z);
                 _isSlide = false;
                 _xVelocity = 0.0f;
+                _clockWise = 1;
                 StartCoroutine(SlideTimeCoroutine());
 //                _clockWise = 1;
 //                _isGetUp = true;
@@ -139,7 +139,7 @@ public class PlayerRotation : MonoBehaviour {
     private IEnumerator SlideTimeCoroutine()
     {
         yield return new WaitForSeconds(0.5f);
-        _clockWise = 1;
+        
         _isGetUp = true;
         _playerTransform.position = new Vector3(_playerTransform.position.x, _playerTransform.position.y - 0.3f,
             _playerTransform.position.z);
@@ -152,10 +152,12 @@ public class PlayerRotation : MonoBehaviour {
         {
             yield return new WaitUntil(IsGetUp);
             //@Renato: Chama a rotação até que a mesma tenha chego na rotação esperada
-            if (_xRotation >= 0)
+            if (_refRotation >= 0)
             {
                 _isGetUp = false;
                 _xVelocity = 0.0f;
+                _xRotation = 0;
+                //RotatePlayer();
             }
             else
             {
@@ -168,9 +170,10 @@ public class PlayerRotation : MonoBehaviour {
     private void Rotate()
     {
         //@Renato: Incrementa o próximo valor da rotação utilizando o clockWise para definir o sentido de rotação
-        _refRotation += _clockWise * _rotationSpeed * _playerSpeed * Time.deltaTime;
+        _xRotation = _clockWise * _rotationSpeed * _playerSpeed * Time.deltaTime;
+        _refRotation += _xRotation;
         //@Renato: Calcula o quanto a Camera irá rotacionar utilizando o valor de yRotate
-        _xRotation = Mathf.SmoothDamp(_xRotation, _refRotation, ref _xVelocity, _smoothTime * _playerSpeed);
+//        _xRotation = Mathf.SmoothDamp(_xRotation, _refRotation, ref _xVelocity, _smoothTime * _playerSpeed);
 
         RotatePlayer();
     }
@@ -181,8 +184,9 @@ public class PlayerRotation : MonoBehaviour {
         if (_playerTransform == null)
             return;
         //@Renato: Calcula um quaternion com os novos angulos
-        Quaternion rotation = Quaternion.Euler(_xRotation, 0, 0);
+        //Quaternion rotation = Quaternion.Euler(_xRotation, _playerTransform.localRotation.eulerAngles.y, _playerTransform.localRotation.eulerAngles.z);
         //@Renato: Atualiza a rotação da Camera
-        _playerTransform.rotation = rotation;
+        //_playerTransform.rotation = rotation;
+        _playerTransform.Rotate(_xRotation, 0, 0, Space.Self);
     }
 }

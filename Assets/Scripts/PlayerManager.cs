@@ -69,21 +69,21 @@ public class PlayerManager : MonoBehaviour
 	// Update is called once per frame
 	private void Update ()
 	{
-		var newPosition = new Vector3(_playerTransform.position.x, _playerTransform.position.y, _playerTransform.position.z);
+		var newPosition = Vector3.zero;
 		
 		if (Input.GetKeyDown("a"))
 		{
 //			force += Vector3.left * SideSpeed;
 //			transform.position = new Vector3(transform.position.x - SideSpeed, transform.position.y, transform.position.z);
-			newPosition.x -= SideSpeed;
-			_playerTransform.position = newPosition;
+			newPosition += Vector3.left * SideSpeed;
+//			_playerTransform.position = newPosition;
 		}
 		else if (Input.GetKeyDown("d"))
 		{
 //			force += Vector3.right * SideSpeed;
 //			transform.position = new Vector3(transform.position.x + SideSpeed, transform.position.y, transform.position.z);
-			newPosition.x += SideSpeed;
-			_playerTransform.position = newPosition;
+			newPosition += Vector3.right * SideSpeed;
+//			_playerTransform.position = newPosition;
 		}
 
 		else if (Input.GetKeyDown("space"))
@@ -129,13 +129,13 @@ public class PlayerManager : MonoBehaviour
 					// Report that the touch has ended when it ends
 					if (Mathf.Abs(_direction.x) > Mathf.Abs(_direction.y))
 					{
-						var side = SideSpeed;
+						var side = Vector3.right * SideSpeed;
 						if (_direction.x < 0)
 						{
-							side = -SideSpeed;
+							side = Vector3.right * SideSpeed;
 						}
 
-						newPosition.x += side;
+						newPosition += side;
 						
 					}
 					else
@@ -159,24 +159,27 @@ public class PlayerManager : MonoBehaviour
 		{
 			if (_isJumping)
 			{
-				newPosition.y += JumpForce * Time.deltaTime;
-				if (newPosition.y >= JumpHeight)
+				newPosition += Vector3.up * JumpForce * Time.deltaTime;
+				
+				if (_playerTransform.position.y >= JumpHeight)
 				{
 					_isJumping = false;
 				}
 			}
 			else
 			{
-				newPosition.y -= Gravity * Time.deltaTime;
-				if (newPosition.y <= 0)
+				newPosition += Vector3.down * Gravity * Time.deltaTime;
+				if (_playerTransform.position.y <= 0)
 				{
-					newPosition.y = 0;
+					_playerTransform.position = new Vector3(_playerTransform.position.x, 0, _playerTransform.position.z);
+					newPosition = Vector3.zero;
 					_isGrounded = true;
 				}	
 			}
 		}
 		
-		_playerTransform.position = newPosition;
+		newPosition = _playerTransform.TransformDirection(newPosition);
+		_playerTransform.position += newPosition;
 		
 	}
 
